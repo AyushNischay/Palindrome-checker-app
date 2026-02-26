@@ -1,23 +1,22 @@
-import java.util.Scanner;
-public class PalindromeCheck {
-    public static void main(String[] args) {
-        String input = "deified";
-        char[] charArray = input.toCharArray();
-        boolean isPalindrome = true;
-        int left = 0;
-        int right = charArray.length - 1;
-        while (left < right) {
-            if (charArray[left] != charArray[right]) {
-                isPalindrome = false;
-                break;
-            }
-            left++;
-            right--;
-        }
-        if (isPalindrome) {
-            System.out.println(input + " is a palindrome.");
-        } else {
-            System.out.println( input + " is not a palindrome.");
-        }
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+
+static void main() {
+    String input = "civic";
+    Queue<Character> queue = new LinkedList<>();
+    Stack<Character> stack = new Stack<>();
+    for (char c : input.toCharArray()) {
+        queue.add(c);
+        stack.push(c);
+    }
+    boolean isPalindrome = true;
+    while (!queue.isEmpty()) {
+        if (!queue.remove().equals(stack.pop())) {
+            isPalindrome = false;
+            break;
         }
     }
+    System.out.println("Input : " + input);
+    System.out.println("Is Palindrome? : " + isPalindrome);
+}
