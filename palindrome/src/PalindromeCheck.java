@@ -1,23 +1,23 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 public class PalindromeCheck {
     public static void main(String[] args) {
-        String input = "refer";
-        String clean = input.toLowerCase();
-        Deque<Character> deque = new ArrayDeque<>();
-       for (char c : clean.toCharArray()) {
-            deque.addLast(c);
+        String input = "level";
+        System.out.println("Input : " + input);
+        LinkedList<Character> list = new LinkedList<>();
+        for (char c : input.toCharArray()) {
+            list.add(c);
         }
         boolean isPalindrome = true;
-        while (deque.size() > 1 && isPalindrome) {
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-            if (first != last) {
+        while (list.size() > 1) {
+            Character first = list.removeFirst();
+            Character last = list.removeLast();
+            if (!first.equals(last)) {
                 isPalindrome = false;
+                break;
             }
         }
-        System.out.println("\"" + input + "\" is " +
-                (isPalindrome ? "a palindrome" : "not a palindrome"));
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
+
